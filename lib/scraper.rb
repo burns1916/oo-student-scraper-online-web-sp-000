@@ -34,7 +34,6 @@ class Scraper
         end
           student_info[:profile_quotes] = doc.css("div.profile-quote").text
           student_info[:bio] = doc.css("div.bio-content.content-holder p").text
-binding.pry
       student_info
     end
 
