@@ -27,9 +27,9 @@ class Scraper
           :linkedin => roster.css(""),
           :github => roster.css(""),
           :blog => roster.css(""),
-        end
+
           :profile_quotes => roster.css("div.profile-quote").text,
-        end
+
           :bio => doc.css("div.bio-content.content-holder p").text
       end
       student_info
