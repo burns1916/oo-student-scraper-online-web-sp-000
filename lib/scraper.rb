@@ -24,7 +24,7 @@ class Scraper
       doc.css('div.vitals-container').each do |roster|
         binding.pry
         student_info = {
-          :twitter => roster.css(""),
+          :twitter => roster.css("div.social-icon-container a").attribute("href").value,
           :linkedin => roster.css(""),
           :github => roster.css(""),
           :blog => roster.css(""),
