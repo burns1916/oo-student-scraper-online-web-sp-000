@@ -31,7 +31,6 @@ class Scraper
           student_info[:github]
         else
           student_info[:blog]
-        end
           student_info[:profile_quotes] = roster.css("div.profile-quote").text,
         end
           student_info[:bio] = doc.css("div.bio-content.content-holder p").text
