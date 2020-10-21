@@ -24,10 +24,10 @@ class Scraper
       container = doc.css('div.vitals-container').each do |roster|
         binding.pry
         student_info = {
-          :twitter => roster.css("div.social-icon-container a").attribute("href").value,
-          :linkedin => roster.css(""),
-          :github => roster.css(""),
-          :blog => roster.css(""),
+          :twitter => if roster.css("div.social-icon-container a").attribute("href").value.include?("twitter"),
+          :linkedin => if roster.css("div.social-icon-container a").attribute("href").value.include?("linkedin"),
+          :github => if roster.css("div.social-icon-container a").attribute("href").value.include?("github"),
+          :blog => if roster.css("div.social-icon-container a").attribute("href").value.include?("twitter"),
 
           :profile_quotes => roster.css("div.profile-quote").text,
 
