@@ -22,7 +22,6 @@ class Scraper
     doc = Nokogiri::HTML(open('https://learn-co-curriculum.github.io/student-scraper-test-page/students/ryan-johnson.html'))
       student_info = {}
       container = doc.css('div.vitals-container').each do |roster|
-            container
           :twitter => roster.css("div.social-icon-container a").attribute("href").value,
           :linkedin => roster.css(""),
           :github => roster.css(""),
