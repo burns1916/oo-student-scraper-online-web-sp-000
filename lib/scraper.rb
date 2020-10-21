@@ -22,16 +22,19 @@ class Scraper
     doc = Nokogiri::HTML(open(profile_url))
       student_info = {}
       container = doc.css('div.vitals-container').each do |roster|
-        student_info = {
-          :twitter => if roster.css("div.social-icon-container a").attribute("href").value.include?("twitter"),
-          :linkedin => if roster.css("div.social-icon-container a").attribute("href").value.include?("linkedin"),
-          :github => if roster.css("div.social-icon-container a").attribute("href").value.include?("github"),
-          :blog => if roster.css("div.social-icon-container a").attribute("href").value.include?("twitter"),
-
-          :profile_quotes => roster.css("div.profile-quote").text,
-
-          :bio => doc.css("div.bio-content.content-holder p").text}
-      end
+        links = roster.css("div.social-icon-container a").attribute("href").value
+        if links.include?("twitter")
+          student_info[:twitter]
+        elsif links.include?("linkedin")
+          student_info[:linkedin]
+        elsif links.include?("github")
+          student_info[:github]
+        else
+          :blog =>  links.include?("twitter"),
+        end
+          student_info[:profile_quotes] = roster.css("div.profile-quote").text,
+        end
+          student_info[:bio] = doc.css("div.bio-content.content-holder p").text
       student_info
     end
 
