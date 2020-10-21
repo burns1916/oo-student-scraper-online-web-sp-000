@@ -22,7 +22,6 @@ class Scraper
     doc = Nokogiri::HTML(open(profile_url))
       student_info = {}
       container = doc.css('div.vitals-container').each do |roster|
-        binding.pry
         student_info = {
           :twitter => if roster.css("div.social-icon-container a").attribute("href").value.include?("twitter"),
           :linkedin => if roster.css("div.social-icon-container a").attribute("href").value.include?("linkedin"),
