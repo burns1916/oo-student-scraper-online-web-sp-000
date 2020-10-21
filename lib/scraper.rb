@@ -22,16 +22,16 @@ class Scraper
     doc = Nokogiri::HTML(open(profile_url))
     student_info = {}
     html.css("div.social-icon-controler a").each do |student|
-     url = student.attribute("href")
-     students_info[:twitter_url] = url if url.include?("twitter")
-     students_info[:linkedin_url] = url if url.include?("linkedin")
-     students_info[:github_url] = url if url.include?("github")
-     students_info[:blog_url] = url if student.css("img").attribute("src").text.include?("rss")
- end
-     students_info[:profile_quote] = html.css("div.profile-quote").text
-     students_info[:bio] = html.css("div.bio-content p").text
- students_info
-end
+      url = student.attribute("href")
+      students_info[:twitter_url] = url if url.include?("twitter")
+      students_info[:linkedin_url] = url if url.include?("linkedin")
+      students_info[:github_url] = url if url.include?("github")
+      students_info[:blog_url] = url if student.css("img").attribute("src").text.include?("rss")
+    end
+      students_info[:profile_quote] = html.css("div.profile-quote").text
+      students_info[:bio] = html.css("div.bio-content p").text
+     students_info
+
     end
 
 end
