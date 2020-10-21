@@ -23,11 +23,11 @@ class Scraper
       student_info = {}
       container = doc.css('div.vitals-container').each do |roster|
         links = roster.css("div.social-icon-container a").attribute("href").value
-        if links.include?("twitter") =
+        if links.include?("twitter") 
           student_info[:twitter]
-        elsif links.include?("linkedin") =
+        elsif links.include?("linkedin")
           student_info[:linkedin]
-        elsif links.include?("github") =
+        elsif links.include?("github")
           student_info[:github]
         else
           student_info[:blog]
