@@ -23,7 +23,7 @@ class Scraper
       student_info = {}
       links = doc.css('div.social-icon-container a').map {|social_media| link.attr("href").value}
         if link.include?("twitter")
-          student_info[:twitter] = link 
+          student_info[:twitter] = link
         elsif link.include?("linkedin")
           student_info[:linkedin] = link
         elsif link.include?("github")
@@ -33,7 +33,7 @@ class Scraper
       end
       student_info[:profile_quotes] = doc.css("div.profile-quote").text,
       student_info[:bio] = doc.css("div.bio-content.content-holder p").text
-    
+
       student_info
     end
 
